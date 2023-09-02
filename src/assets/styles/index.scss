@@ -1,0 +1,221 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  background-image: url("assets//images/Main.jpg");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 960px;
+  height: 595px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/images/openbook.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0;
+    transition: opacity 350ms ease-in;
+  }
+
+  &_active {
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &__content {
+    width: 870px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 350ms ease-in;
+    transform: translateX(-25%);
+
+    &_active {
+      transform: translateX(0%);
+    }
+  }
+}
+
+.btn {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  svg {
+    circle {
+      stroke: #fff;
+    }
+
+    stop {
+      stop-color: #fff;
+    }
+  }
+
+  &.btn_active {
+    svg {
+      circle {
+        stroke: #ffca2b;
+      }
+      stop {
+        stop-color: #ffca2b;
+      }
+    }
+  }
+}
+
+.page {
+  background: linear-gradient(
+    270deg,
+    #c4bdae 0%,
+    #ddd3bf 8.43%,
+    #ebd9c5 31%,
+    #e9dac5 67%,
+    #d1ccc1 100%
+  );
+
+  width: 100%;
+  height: 100%;
+
+  &__content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__image {
+    max-width: 400px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    margin: 15px 0;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  &__text {
+    margin-top: 15px;
+  }
+
+  &__bottom {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  &__num {
+    position: absolute;
+    color: #333;
+  }
+}
+
+.book-pagination {
+  margin-top: 20px;
+  position: absolute;
+  top: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  opacity: 0;
+  transition: all 0.3s ease;
+
+  &_active {
+    opacity: 1;
+  }
+}
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-image: url("assets//images/Main.jpg");
+}
+
+.book-cover {
+  background-image: url("assets/images/book.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 600px;
+  width: 450px;
+  left: 20px;
+  position: relative;
+
+  &_absolute {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 99999;
+  }
+}
+
+.book-slider {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 130%;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -70px;
+  z-index: 2;
+
+  &__line {
+    width: 100%;
+    display: inline-block;
+    border-bottom: 3px dotted rgba(255, 255, 255, 0.5);
+  }
+
+  &__starter {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    svg {
+      circle {
+        stroke: #fff;
+      }
+
+      stop {
+        stop-color: #fff;
+      }
+    }
+  }
+}

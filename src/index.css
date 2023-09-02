@@ -1,13 +1,242 @@
-body {
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background-image: url("assets//images/Main.jpg");
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 960px;
+  height: 595px;
+}
+.app::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("assets/images/openbook.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0;
+  -webkit-transition: opacity 350ms ease-in;
+  transition: opacity 350ms ease-in;
+}
+.app_active::before {
+  opacity: 1;
+}
+.app__content {
+  width: 870px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: all 350ms ease-in;
+  transition: all 350ms ease-in;
+  -webkit-transform: translateX(-25%);
+      -ms-transform: translateX(-25%);
+          transform: translateX(-25%);
+}
+.app__content_active {
+  -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+.btn {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.btn svg circle {
+  stroke: #fff;
+}
+.btn svg stop {
+  stop-color: #fff;
+}
+.btn.btn_active svg circle {
+  stroke: #ffca2b;
+}
+.btn.btn_active svg stop {
+  stop-color: #ffca2b;
+}
+
+.page {
+  background: -webkit-gradient(linear, right top, left top, from(#c4bdae), color-stop(8.43%, #ddd3bf), color-stop(31%, #ebd9c5), color-stop(67%, #e9dac5), to(#d1ccc1));
+  background: linear-gradient(270deg, #c4bdae 0%, #ddd3bf 8.43%, #ebd9c5 31%, #e9dac5 67%, #d1ccc1 100%);
+  width: 100%;
+  height: 100%;
+}
+.page__content {
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+}
+.page__image {
+  max-width: 400px;
+}
+.page__image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.page__title {
+  margin: 15px 0;
+  font-size: 24px;
+  text-align: center;
+}
+.page__text {
+  margin-top: 15px;
+}
+.page__bottom {
+  margin-top: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+.page__num {
+  position: absolute;
+  color: #333;
+}
+
+.book-pagination {
+  margin-top: 20px;
+  position: absolute;
+  top: 100%;
+  z-index: 999;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 30px;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.book-pagination_active {
+  opacity: 1;
+}
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-image: url("assets//images/Main.jpg");
+}
+
+.book-cover {
+  background-image: url("assets/images/book.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 600px;
+  width: 450px;
+  left: 20px;
+  position: relative;
+}
+.book-cover_absolute {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 99999;
+}
+
+.book-slider {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 20px;
+  width: 130%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: -70px;
+  z-index: 2;
+}
+.book-slider__line {
+  width: 100%;
+  display: inline-block;
+  border-bottom: 3px dotted rgba(255, 255, 255, 0.5);
+}
+.book-slider__starter {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+.book-slider__starter svg circle {
+  stroke: #fff;
+}
+.book-slider__starter svg stop {
+  stop-color: #fff;
 }
