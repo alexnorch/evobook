@@ -13,15 +13,3 @@ const BookClosed = ({ onOpenBook }) => {
 };
 
 export default BookClosed;
-
-// export default BookClosed;
-
-// import { forwardRef } from "react";
-
-// const BookCoverTest = forwardRef((props, ref) => (
-//   <div ref={ref} className="book-cover">
-//     {props.children}
-//   </div>
-// ));
-
-// export default BookCoverTest;

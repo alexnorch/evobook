@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import HTMLFlipBook from "react-pageflip";
+import { getBookSize } from "./helpers";
 
 // Components
 import { BookClosed, BookPagination, BookPage, BookCover } from "./components";
@@ -12,6 +13,7 @@ const App = () => {
   const [isPagination, setIsPagination] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [pagesLength, setPagesLength] = useState(0);
+  const [bookSize, setBookSize] = useState(getBookSize());
 
   const bookRef = useRef(null);
   const appRef = useRef(null);
@@ -20,6 +22,19 @@ const App = () => {
     ? "app__content app__content_active"
     : "app__content";
 
+  useEffect(() => {
+    const updateScreenSize = () => {
+      setBookSize(getBookSize());
+    };
+
+    window.addEventListener("resize", updateScreenSize);
+
+    return () => {
+      window.removeEventListener("resize", updateScreenSize);
+    };
+  }, [bookSize.height, bookSize.width]);
+
+  // Opening the book after delay
   useEffect(() => {
     let timeoutId;
 
@@ -53,7 +68,7 @@ const App = () => {
   };
 
   const onFlipHandler = (e) => {
-    if (e.data === 0) {
+    if (e.data === 0 && !isOpenBook) {
       setIsOpenBook(false);
       setIsPagination(false);
     }
@@ -76,12 +91,15 @@ const App = () => {
           ref={bookRef}
           onFlip={onFlipHandler}
           onInit={onFlipInit}
-          height="560"
-          width="435"
+          height={bookSize.height}
+          width={bookSize.width}
+          minWidth={290}
+          maxWidth={1000}
+          minHeight={430}
+          maxHeight={1533}
           size="stretch"
           drawShadow={false}
           showCover={true}
-          className="my-book"
         >
           <BookCover />
           {pages.map((item, i) => (

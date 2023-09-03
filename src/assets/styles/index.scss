@@ -1,28 +1,48 @@
+@import "./mixins.scss";
+
+@font-face {
+  font-family: "Mariupol Regular";
+  src: url("assets/fonts/mariupol-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mariupol Medium";
+  src: url("assets/fonts/mariupol-medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mariupol Bold";
+  src: url("assets/fonts/mariupol-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Mariupol Regular", sans-serif;
 }
 
 body {
+  @include displayFlex;
   background-image: url("assets//images/Main.jpg");
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
   overflow: hidden;
 }
 
 .app {
+  @include displayFlex;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 960px;
   height: 595px;
 
   &::before {
+    display: none;
     content: "";
     position: absolute;
     top: 0;
@@ -44,10 +64,8 @@ body {
   }
 
   &__content {
+    @include displayFlex;
     width: 870px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transition: all 350ms ease-in;
     transform: translateX(-25%);
 
@@ -95,6 +113,8 @@ body {
     #d1ccc1 100%
   );
 
+  font-size: 12px;
+
   width: 100%;
   height: 100%;
 
@@ -107,6 +127,7 @@ body {
 
   &__image {
     max-width: 400px;
+    min-height: 200px;
 
     img {
       width: 100%;
@@ -126,21 +147,20 @@ body {
   }
 
   &__bottom {
-    margin-top: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include displayFlex;
     position: relative;
+    margin-top: auto;
   }
 
   &__num {
     position: absolute;
-    color: #333;
+    color: #070703;
+    font-size: 12px;
   }
 }
 
 .book-pagination {
-  margin-top: 20px;
+  margin-top: 15px;
   position: absolute;
   top: 100%;
   z-index: 999;
@@ -170,7 +190,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   height: 600px;
-  width: 450px;
+  width: 480px;
   left: 20px;
   position: relative;
 
@@ -184,29 +204,51 @@ body {
 }
 
 .book-slider {
+  @include displayFlex(center, space-between);
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  width: 130%;
+  width: 100%;
   top: 50%;
   transform: translateY(-50%);
-  left: -70px;
   z-index: 2;
+  left: -55px;
+  gap: 5px;
 
   &__line {
     width: 100%;
     display: inline-block;
-    border-bottom: 3px dotted rgba(255, 255, 255, 0.5);
+
+    svg {
+      width: 100%;
+    }
   }
 
   &__starter {
+    @include displayFlex;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
+    z-index: 6;
+    transition: transform 0.3s ease-in;
+
+    &:hover {
+      transform: scale(0.95);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 110%;
+      height: 110%;
+      background-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0px 0px 50px 15px rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.3s ease-in, box-shadow 0.3s ease-in;
+    }
 
     svg {
       circle {
@@ -217,5 +259,109 @@ body {
         stop-color: #fff;
       }
     }
+  }
+}
+
+.volume {
+  position: fixed;
+  bottom: 15px;
+  right: 25px;
+  z-index: 9999;
+}
+
+@media (max-width: 319px) {
+  .app {
+    max-width: 290px;
+    max-height: 428px;
+  }
+
+  .book-cover {
+    width: 225px;
+    height: 280px;
+  }
+
+  .book-slider {
+    width: 140%;
+    left: -55px;
+    gap: 5px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 359px) {
+  .app {
+    max-width: 320px;
+    height: 428px;
+  }
+
+  .book-cover {
+    width: 225px;
+    height: 280px;
+  }
+
+  .book-slider {
+    width: 93%;
+    left: -55px;
+    gap: 5px;
+  }
+
+  .book-slider {
+    width: 138%;
+    left: -55px;
+    gap: 5px;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 411px) {
+  .app {
+    max-width: 360px;
+    height: 460px;
+  }
+
+  .book-cover {
+    width: 265px;
+    height: 330px;
+  }
+
+  .book-slider {
+    width: 133%;
+    left: -55px;
+    gap: 5px;
+  }
+}
+
+@media (min-width: 412px) and (max-width: 1095px) {
+  .app {
+    max-width: 412px;
+    height: 541px;
+  }
+
+  .book-slider {
+    width: 131%;
+    left: -55px;
+    gap: 5px;
+  }
+
+  .book-cover {
+    width: 285px;
+    height: 355px;
+  }
+}
+
+@media (min-width: 1096px) {
+  .app {
+    &::before {
+      display: block;
+    }
+  }
+
+  .book-slider {
+    width: 130%;
+    left: -70px;
+    gap: 20px;
+  }
+
+  .volume {
+    bottom: 30px;
+    right: 50px;
   }
 }

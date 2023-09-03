@@ -1,5 +1,6 @@
 import { ReactComponent as ArrowLeft } from "../assets/images/arrowleft.svg";
 import { ReactComponent as ArrowRight } from "../assets/images/arrowright.svg";
+import { ReactComponent as VolumeIcon } from "../assets/images/volume.svg";
 
 const BookPagination = ({
   currentPage,
@@ -8,7 +9,6 @@ const BookPagination = ({
   onPrevPage,
   isPagination,
 }) => {
-  console.log(currentPage);
   const isPrevActive = currentPage > 1;
   const isNextActive = currentPage + 2 !== pagesLength;
 
@@ -29,6 +29,10 @@ const BookPagination = ({
       <button onClick={onNextPage} className={rightButton}>
         <ArrowRight />
       </button>
+
+      <div className="volume">
+        <VolumeIcon />
+      </div>
     </div>
   );
 };
