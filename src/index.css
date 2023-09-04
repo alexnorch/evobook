@@ -185,24 +185,53 @@ body {
   font-size: 12px;
 }
 
-.book-pagination {
+.book-bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   margin-top: 15px;
   position: absolute;
   top: 100%;
   z-index: 999;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   gap: 30px;
-  opacity: 0;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.book-pagination_active {
+.book-bottom__pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 30px;
+  opacity: 0;
+}
+.book-bottom__pagination_active {
   opacity: 1;
+}
+.book-bottom__icon {
+  position: fixed;
+  bottom: 15px;
+  right: 25px;
+  z-index: 9999;
 }
 
 .backdrop {
@@ -318,13 +347,6 @@ body {
   stop-color: #fff;
 }
 
-.volume {
-  position: fixed;
-  bottom: 15px;
-  right: 25px;
-  z-index: 9999;
-}
-
 @media (max-width: 319px) {
   .app {
     max-width: 290px;
@@ -398,9 +420,5 @@ body {
     width: 130%;
     left: -70px;
     gap: 20px;
-  }
-  .volume {
-    bottom: 30px;
-    right: 50px;
   }
 }

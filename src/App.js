@@ -22,6 +22,7 @@ const App = () => {
     ? "app__content app__content_active"
     : "app__content";
 
+  // Updating the book size due to the current screen size
   useEffect(() => {
     const updateScreenSize = () => {
       setBookSize(getBookSize());
@@ -103,11 +104,10 @@ const App = () => {
         >
           <BookCover />
           {pages.map((item, i) => (
-            <BookPage {...item} pageNum={i} key={i} />
+            <BookPage {...item} key={i} />
           ))}
         </HTMLFlipBook>
       </div>
-
       <BookPagination
         isPagination={isPagination}
         currentPage={currentPage}

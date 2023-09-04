@@ -159,19 +159,30 @@ body {
   }
 }
 
-.book-pagination {
+.book-bottom {
+  @include displayFlex;
   margin-top: 15px;
   position: absolute;
   top: 100%;
   z-index: 999;
-  display: flex;
-  justify-content: center;
   gap: 30px;
-  opacity: 0;
   transition: all 0.3s ease;
 
-  &_active {
-    opacity: 1;
+  &__pagination {
+    @include displayFlex;
+    gap: 30px;
+    opacity: 0;
+
+    &_active {
+      opacity: 1;
+    }
+  }
+
+  &__icon {
+    position: fixed;
+    bottom: 15px;
+    right: 25px;
+    z-index: 9999;
   }
 }
 
@@ -260,13 +271,6 @@ body {
       }
     }
   }
-}
-
-.volume {
-  position: fixed;
-  bottom: 15px;
-  right: 25px;
-  z-index: 9999;
 }
 
 @media (max-width: 319px) {
@@ -358,10 +362,5 @@ body {
     width: 130%;
     left: -70px;
     gap: 20px;
-  }
-
-  .volume {
-    bottom: 30px;
-    right: 50px;
   }
 }

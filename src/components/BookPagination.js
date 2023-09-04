@@ -1,3 +1,4 @@
+// Icons
 import { ReactComponent as ArrowLeft } from "../assets/images/arrowleft.svg";
 import { ReactComponent as ArrowRight } from "../assets/images/arrowright.svg";
 import { ReactComponent as VolumeIcon } from "../assets/images/volume.svg";
@@ -15,28 +16,27 @@ const BookPagination = ({
   const leftButton = isPrevActive ? "btn btn_active" : "btn";
   const rightButton = isNextActive ? "btn btn_active" : "btn";
 
-  let paginationClass = "book-pagination";
+  let paginationClass = "book-bottom__pagination";
 
   if (isPagination) {
-    paginationClass += " book-pagination_active";
+    paginationClass += " book-bottom__pagination_active";
   }
 
   return (
-    <div className={paginationClass}>
-      <button onClick={onPrevPage} className={leftButton}>
-        <ArrowLeft className="btn__icon" />
-      </button>
-      <button onClick={onNextPage} className={rightButton}>
-        <ArrowRight />
-      </button>
-
-      <div className="volume">
+    <div className="book-bottom">
+      <div className={paginationClass}>
+        <button onClick={onPrevPage} className={leftButton}>
+          <ArrowLeft className="btn__icon" />
+        </button>
+        <button onClick={onNextPage} className={rightButton}>
+          <ArrowRight />
+        </button>
+      </div>
+      <div className="book-bottom__icon">
         <VolumeIcon />
       </div>
     </div>
   );
 };
-
-// SVG active nonactive
 
 export default BookPagination;

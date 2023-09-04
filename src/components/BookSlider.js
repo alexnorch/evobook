@@ -1,7 +1,9 @@
+import { useState, useEffect } from "react";
+
+// Icons
 import { ReactComponent as ArrowLeft } from "../assets/images/arrowleft.svg";
 import { ReactComponent as Circle } from "../assets/images/circle.svg";
 import { ReactComponent as Line } from "../assets/images/line.svg";
-import { useState, useEffect } from "react";
 
 const BookSlider = ({ onOpenBook }) => {
   const [isDragging, setIsDragging] = useState(false);
@@ -22,20 +24,25 @@ const BookSlider = ({ onOpenBook }) => {
     const maxPosition = 0;
     const minPosition = arrow.parentElement.offsetWidth - arrowWidth;
 
-    const onMouseDown = (e) => {
+    const onSliderStart = (e) => {
       if (e.target.closest(".book-slider__starter")) {
+        const touches = e.touches && e.touches[0];
+        const clientX = touches ? touches.clientX : e.clientX;
+
         setIsDragging(true);
-        setStartX(e.clientX - currentX);
+        setStartX(clientX - currentX);
       }
     };
 
-    const onMouseUp = () => {
+    const onSliderEnd = () => {
       setIsDragging(false);
     };
 
-    const onMouseMove = (e) => {
+    const onSliderMove = (e) => {
       if (isDragging) {
-        const position = e.clientX - startX;
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const position = clientX - startX;
+
         setCurrentX(Math.max(-minPosition, Math.min(position, maxPosition)));
 
         if (position <= -minPosition && !isOpenBookFlag) {
@@ -44,14 +51,22 @@ const BookSlider = ({ onOpenBook }) => {
       }
     };
 
-    window.addEventListener("mousedown", onMouseDown);
-    window.addEventListener("mouseup", onMouseUp);
-    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mousedown", onSliderStart);
+    window.addEventListener("mouseup", onSliderEnd);
+    window.addEventListener("mousemove", onSliderMove);
+
+    window.addEventListener("touchstart", onSliderStart);
+    window.addEventListener("touchend", onSliderEnd);
+    window.addEventListener("touchmove", onSliderMove);
 
     return () => {
-      window.removeEventListener("mousedown", onMouseDown);
-      window.removeEventListener("mouseup", onMouseUp);
-      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mousedown", onSliderStart);
+      window.removeEventListener("mouseup", onSliderEnd);
+      window.removeEventListener("mousemove", onSliderMove);
+
+      window.removeEventListener("touchend", onSliderEnd);
+      window.removeEventListener("touchstart", onSliderStart);
+      window.removeEventListener("touchmove", onSliderMove);
     };
   }, [isDragging]);
 
