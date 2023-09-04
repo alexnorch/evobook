@@ -3,7 +3,7 @@ import { ReactComponent as ArrowLeft } from "../assets/images/arrowleft.svg";
 import { ReactComponent as ArrowRight } from "../assets/images/arrowright.svg";
 import { ReactComponent as VolumeIcon } from "../assets/images/volume.svg";
 
-const BookPagination = ({
+const BookNavigation = ({
   currentPage,
   pagesLength,
   onNextPage,
@@ -39,4 +39,4 @@ const BookPagination = ({
   );
 };
 
-export default BookPagination;
+export default BookNavigation;

@@ -3,7 +3,7 @@ import HTMLFlipBook from "react-pageflip";
 import { getBookSize } from "./helpers";
 
 // Components
-import { BookClosed, BookPagination, BookPage, BookCover } from "./components";
+import { BookClosed, BookNavigation, BookPage, BookCover } from "./components";
 
 // Dummy data
 import { pages } from "./data";
@@ -108,7 +108,7 @@ const App = () => {
           ))}
         </HTMLFlipBook>
       </div>
-      <BookPagination
+      <BookNavigation
         isPagination={isPagination}
         currentPage={currentPage}
         pagesLength={pagesLength}

@@ -26,8 +26,7 @@ const BookSlider = ({ onOpenBook }) => {
 
     const onSliderStart = (e) => {
       if (e.target.closest(".book-slider__starter")) {
-        const touches = e.touches && e.touches[0];
-        const clientX = touches ? touches.clientX : e.clientX;
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
 
         setIsDragging(true);
         setStartX(clientX - currentX);
