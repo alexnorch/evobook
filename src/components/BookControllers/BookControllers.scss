@@ -1,0 +1,28 @@
+@import "../../assets/styles/mixins.scss";
+
+.book-controllers {
+  @include displayFlex;
+  margin-top: 15px;
+  position: absolute;
+  top: 100%;
+  z-index: 999;
+  gap: 30px;
+  transition: all 0.3s ease;
+
+  &__pagination {
+    @include displayFlex;
+    gap: 30px;
+    opacity: 0;
+
+    &_active {
+      opacity: 1;
+    }
+  }
+
+  &__icon {
+    position: fixed;
+    bottom: 15px;
+    right: 25px;
+    z-index: 9999;
+  }
+}

@@ -1,4 +1,5 @@
-import BookSlider from "./BookSlider";
+import BookSlider from "../BookSlider/BookSlider";
+import "./BookClosed.scss";
 
 const BookClosed = ({ onOpenBook }) => {
   return (

@@ -1,7 +1,8 @@
 import { forwardRef } from "react";
+import "./BookPage.scss";
 
 // Icons
-import { ReactComponent as PageNumberIcon } from "../assets/images/pagenumber.svg";
+import { ReactComponent as PageNumberIcon } from "../../assets/images/pagenumber.svg";
 
 const BookPage = forwardRef(({ title, picture, story, pageNum }, ref) => {
   return (

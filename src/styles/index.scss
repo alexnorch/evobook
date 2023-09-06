@@ -1,0 +1,196 @@
+@import "./_mixins.scss";
+
+@font-face {
+  font-family: "Mariupol Regular";
+  src: url("../assets/fonts/mariupol-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mariupol Medium";
+  src: url("../assets/fonts/mariupol-medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mariupol Bold";
+  src: url("../assets/fonts/mariupol-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Mariupol Regular", sans-serif;
+}
+
+body {
+  @include displayFlex;
+  background-image: url("../assets/images/Main.jpg");
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app {
+  @include displayFlex;
+  position: relative;
+  width: 960px;
+  height: 595px;
+
+  &::before {
+    display: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../assets/images/openbook.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0;
+    transition: opacity 350ms ease-in;
+  }
+
+  &_active {
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &__content {
+    @include displayFlex;
+    width: 870px;
+    transition: all 350ms ease-in;
+    transform: translateX(-25%);
+
+    &_active {
+      transform: translateX(0%);
+    }
+  }
+}
+
+.btn {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  svg {
+    circle {
+      stroke: #fff;
+    }
+
+    stop {
+      stop-color: #fff;
+    }
+  }
+
+  &.btn_active {
+    svg {
+      circle {
+        stroke: #ffca2b;
+      }
+      stop {
+        stop-color: #ffca2b;
+      }
+    }
+  }
+}
+
+@media (max-width: 319px) {
+  .app {
+    max-width: 290px;
+    max-height: 428px;
+  }
+
+  .book-cover {
+    width: 225px;
+    height: 280px;
+  }
+
+  .book-slider {
+    width: 140%;
+    left: -55px;
+    gap: 5px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 359px) {
+  .app {
+    max-width: 320px;
+    height: 428px;
+  }
+
+  .book-cover {
+    width: 225px;
+    height: 280px;
+  }
+
+  .book-slider {
+    width: 93%;
+    left: -55px;
+    gap: 5px;
+  }
+
+  .book-slider {
+    width: 138%;
+    left: -55px;
+    gap: 5px;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 411px) {
+  .app {
+    max-width: 360px;
+    height: 460px;
+  }
+
+  .book-cover {
+    width: 265px;
+    height: 330px;
+  }
+
+  .book-slider {
+    width: 133%;
+    left: -55px;
+    gap: 5px;
+  }
+}
+
+@media (min-width: 412px) and (max-width: 1095px) {
+  .app {
+    max-width: 412px;
+    height: 541px;
+  }
+
+  .book-slider {
+    width: 131%;
+    left: -55px;
+    gap: 5px;
+  }
+
+  .book-cover {
+    width: 285px;
+    height: 355px;
+  }
+}
+
+@media (min-width: 1096px) {
+  .app {
+    &::before {
+      display: block;
+    }
+  }
+
+  .book-slider {
+    width: 130%;
+    left: -70px;
+    gap: 20px;
+  }
+}

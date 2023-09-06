@@ -1,7 +1,7 @@
-import BookClosed from "./BookClosed";
-import BookCover from "./BookCover";
-import BookSlider from "./BookSlider";
-import BookNavigation from "./BookNavigation";
-import BookPage from "./BookPage";
+import BookClosed from "./BookClosed/BookClosed";
+import BookCover from "./BookCover/BookCover";
+import BookSlider from "./BookSlider/BookSlider";
+import BookControllers from "./BookControllers/BookControllers";
+import BookPage from "./BookPage/BookPage";
 
-export { BookClosed, BookCover, BookSlider, BookNavigation, BookPage };
+export { BookClosed, BookCover, BookSlider, BookControllers, BookPage };

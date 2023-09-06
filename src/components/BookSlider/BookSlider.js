@@ -1,15 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import "./BookSlider.scss";
 
 // Icons
-import { ReactComponent as ArrowLeft } from "../assets/images/arrowleft.svg";
-import { ReactComponent as Circle } from "../assets/images/circle.svg";
-import { ReactComponent as Line } from "../assets/images/line.svg";
+import { ReactComponent as ArrowLeft } from "../../assets/images/arrowleft.svg";
+import { ReactComponent as Circle } from "../../assets/images/circle.svg";
+import { ReactComponent as Line } from "../../assets/images/line.svg";
 
 const BookSlider = ({ onOpenBook }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [currentX, setCurrentX] = useState(0);
   const [isOpenBookFlag, setIsOpenBookFlag] = useState(false);
+
+  // Refs
+  const arrowRef = useRef(null);
 
   useEffect(() => {
     if (isOpenBookFlag) {
@@ -19,10 +23,10 @@ const BookSlider = ({ onOpenBook }) => {
   }, [isOpenBookFlag]);
 
   useEffect(() => {
-    const arrow = document.querySelector(".book-slider__starter");
-    const arrowWidth = arrow.offsetWidth;
+    const arrowEl = arrowRef.current;
     const maxPosition = 0;
-    const minPosition = arrow.parentElement.offsetWidth - arrowWidth;
+    const arrowWidth = arrowEl.offsetWidth;
+    const minPosition = arrowEl.parentElement.offsetWidth - arrowWidth;
 
     const onSliderStart = (e) => {
       if (e.target.closest(".book-slider__starter")) {
@@ -77,7 +81,11 @@ const BookSlider = ({ onOpenBook }) => {
       <span className="book-slider__line">
         <Line className="book-slider__svg" />
       </span>
-      <div className="book-slider__starter" style={{ left: `${currentX}px` }}>
+      <div
+        ref={arrowRef}
+        className="book-slider__starter"
+        style={{ left: `${currentX}px` }}
+      >
         <ArrowLeft className="test" />
       </div>
     </div>

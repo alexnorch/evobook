@@ -1,9 +1,11 @@
-// Icons
-import { ReactComponent as ArrowLeft } from "../assets/images/arrowleft.svg";
-import { ReactComponent as ArrowRight } from "../assets/images/arrowright.svg";
-import { ReactComponent as VolumeIcon } from "../assets/images/volume.svg";
+import "./BookControllers.scss";
 
-const BookNavigation = ({
+// Icons
+import { ReactComponent as ArrowLeft } from "../../assets/images/arrowleft.svg";
+import { ReactComponent as ArrowRight } from "../../assets/images/arrowright.svg";
+import { ReactComponent as VolumeIcon } from "../../assets/images/volume.svg";
+
+const BookControllers = ({
   currentPage,
   pagesLength,
   onNextPage,
@@ -16,14 +18,14 @@ const BookNavigation = ({
   const leftButton = isPrevActive ? "btn btn_active" : "btn";
   const rightButton = isNextActive ? "btn btn_active" : "btn";
 
-  let paginationClass = "book-bottom__pagination";
+  let paginationClass = "book-controllers__pagination";
 
   if (isPagination) {
-    paginationClass += " book-bottom__pagination_active";
+    paginationClass += " book-controllers__pagination_active";
   }
 
   return (
-    <div className="book-bottom">
+    <div className="book-controllers">
       <div className={paginationClass}>
         <button onClick={onPrevPage} className={leftButton}>
           <ArrowLeft className="btn__icon" />
@@ -32,11 +34,11 @@ const BookNavigation = ({
           <ArrowRight />
         </button>
       </div>
-      <div className="book-bottom__icon">
+      <div className="book-controllers__icon">
         <VolumeIcon />
       </div>
     </div>
   );
 };
 
-export default BookNavigation;
+export default BookControllers;

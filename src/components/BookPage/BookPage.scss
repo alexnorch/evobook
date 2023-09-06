@@ -1,0 +1,57 @@
+@import "../../assets/styles/mixins.scss";
+
+.page {
+  background: linear-gradient(
+    270deg,
+    #c4bdae 0%,
+    #ddd3bf 8.43%,
+    #ebd9c5 31%,
+    #e9dac5 67%,
+    #d1ccc1 100%
+  );
+
+  font-size: 12px;
+
+  width: 100%;
+  height: 100%;
+
+  &__content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__image {
+    max-width: 400px;
+    min-height: 200px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    margin: 15px 0;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  &__text {
+    margin-top: 15px;
+  }
+
+  &__bottom {
+    @include displayFlex;
+    position: relative;
+    margin-top: auto;
+  }
+
+  &__num {
+    position: absolute;
+    color: #070703;
+    font-size: 12px;
+  }
+}
