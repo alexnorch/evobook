@@ -1,4 +1,5 @@
-@import "../../assets/styles/mixins.scss";
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
 
 .book-slider {
   @include displayFlex(center, space-between);
@@ -57,12 +58,28 @@
       }
     }
   }
-}
 
-@media (min-width: 1096px) {
-  .book-slider {
+  @include media-query($breakpoint-xl) {
     width: 130%;
     left: -70px;
     gap: 20px;
+  }
+
+  @include media-query($breakpoint-lg) {
+    width: 131%;
+    left: -55px;
+    gap: 5px;
+  }
+
+  @include media-query($breakpoint-md) {
+    width: 133%;
+  }
+
+  @include media-query($breakpoint-sm) {
+    width: 138%;
+  }
+
+  @include media-query($breakpoint-sx) {
+    width: 140%;
   }
 }

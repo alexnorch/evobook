@@ -3,7 +3,7 @@ export const getBookSize = () => {
   let sizes = {};
 
   if (width <= 320) {
-    sizes = { height: 430, width: 290 };
+    sizes = { height: 420, width: 290 };
   } else if (width <= 360) {
     sizes = { height: 460, width: 310 };
   } else if (width <= 412) {

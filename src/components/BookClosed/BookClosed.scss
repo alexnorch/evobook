@@ -1,3 +1,6 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
 .backdrop {
   position: fixed;
   left: 0;
@@ -9,7 +12,7 @@
 }
 
 .book-cover {
-  background-image: url("../../assets/images/book.svg");
+  background-image: url("../../assets/images/book.png");
   background-size: cover;
   background-repeat: no-repeat;
   height: 600px;
@@ -23,5 +26,25 @@
     transform: translate(-50%, -50%);
     position: absolute;
     z-index: 99999;
+  }
+
+  @include media-query($breakpoint-lg) {
+    width: 285px;
+    height: 355px;
+  }
+
+  @include media-query($breakpoint-md) {
+    width: 265px;
+    height: 330px;
+  }
+
+  @include media-query($breakpoint-sm) {
+    width: 225px;
+    height: 280px;
+  }
+
+  @include media-query($breakpoint-sx) {
+    width: 225px;
+    height: 280px;
   }
 }

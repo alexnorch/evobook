@@ -1,0 +1,79 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.app {
+  @include displayFlex;
+  position: relative;
+  width: 960px;
+
+  &__content {
+    @include displayFlex;
+    width: 870px;
+    transition: all 350ms ease-in;
+    transform: translateX(-25%);
+
+    &_active {
+      transform: translateX(0%);
+    }
+  }
+
+  &::before {
+    display: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../assets/images/openbook.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0;
+    transition: opacity 350ms ease-in;
+  }
+
+  &_active {
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  @include media-query($breakpoint-xl) {
+    &::before {
+      display: block;
+    }
+  }
+
+  @include media-query($breakpoint-lg) {
+    max-width: 412px;
+  }
+
+  @include media-query($breakpoint-md) {
+    max-width: 360px;
+  }
+
+  @include media-query($breakpoint-sm) {
+    max-width: 320px;
+  }
+
+  @include media-query($breakpoint-sx) {
+    max-width: 290px;
+  }
+}
+
+.my-book {
+  height: 595px;
+
+  @include media-query($breakpoint-lg) {
+    height: 540px;
+  }
+
+  @include media-query($breakpoint-md) {
+    height: 460px;
+  }
+
+  @include media-query($breakpoint-sm) {
+    height: 430px;
+  }
+}
